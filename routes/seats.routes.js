@@ -21,7 +21,13 @@ router.post('/', (req, res) => {
     const {day, seat, client, email} = req.body;
 
     if(!day || !seat || !client ||!email ) {
-        return res.status(404).json({error: 'all seat fields are required'})
+        return res.status(404).json({message: 'missing data in request body'})
+    }
+
+    const isTaken = db.seats.some(s => s.seat === seat && s.day === day);
+
+    if(isTaken) {
+        return res.status(409).json({message: 'the slot is already taken...'})
     }
 
     const newSeat = {
