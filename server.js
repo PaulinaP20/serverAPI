@@ -13,7 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
-mongoose.connect('mongodb://127.0.0.1:27017/NewWaveDB', {
+mongoose.connect('mongodb+srv://pp20:Mnjhuy22.@cluster0.p4pqngz.mongodb.net/NewWaveDB?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
